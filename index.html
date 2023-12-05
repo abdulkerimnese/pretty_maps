@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kart Değiştirme</title>
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        #kart {
+            width: 200px;
+            height: 300px;
+            border: 1px solid #ccc;
+            perspective: 1000px;
+            transform-style: preserve-3d; /* Preserve 3D transformations */
+            transition: transform 0.5s ease; /* Transition for smooth animation */
+        }
+
+        #kart .yuz {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            backface-visibility: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #onYuz, #arkaYuz {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            backface-visibility: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.5s ease; /* Transition for smooth animation */
+        }
+
+        #onYuz {
+            transform: rotateY(0deg);
+        }
+
+        #arkaYuz {
+            transform: rotateY(180deg);
+        }
+
+        #onYuz img, #arkaYuz img {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+
+<div id="kart">
+    <div id="onYuz" class="yuz">
+        <img src="fatih_pretty.png" alt="Ön Yüz">
+    </div>
+    <div id="arkaYuz" class="yuz">
+        <img src="fatih_yapi_kapi.png" alt="Arka Yüz">
+    </div>
+</div>
+
+<script>
+    let kart = document.getElementById('kart')
+    counter = 1
+    kart.addEventListener('click', function (){
+        if(counter == 1){
+            kart.style.transform = 'rotateY(180deg)'
+            counter = 2
+        }
+        else if (kart.style.transform == 'rotateY(0deg)') {
+            console.log("1");
+            kart.style.transform = 'rotateY(180deg)'
+        }else{
+            console.log("2");
+            kart.style.transform = 'rotateY(0deg)'
+        }
+    })
+</script>
+</body>
+</html>
